@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://es2.icex.ufmg.mg.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://es2.icex.ufmg.mg.br" xmlns:intf="http://es2.icex.ufmg.mg.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://es2.icex.ufmg.mg.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="pesquisaIsbn">
+    <complexType>
+     <sequence>
+      <element name="isbn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="pesquisaIsbnResponse">
+    <complexType>
+     <sequence>
+      <element name="pesquisaIsbnReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="pesquisaAutor">
+    <complexType>
+     <sequence>
+      <element name="autor" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="pesquisaAutorResponse">
+    <complexType>
+     <sequence>
+      <element name="pesquisaAutorReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="pesquisaAutorRequest">
+
+      <wsdl:part element="impl:pesquisaAutor" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="pesquisaAutorResponse">
+
+      <wsdl:part element="impl:pesquisaAutorResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="pesquisaIsbnRequest">
+
+      <wsdl:part element="impl:pesquisaIsbn" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="pesquisaIsbnResponse">
+
+      <wsdl:part element="impl:pesquisaIsbnResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SimpleBookStore">
+
+      <wsdl:operation name="pesquisaIsbn">
+
+         <wsdl:input message="impl:pesquisaIsbnRequest" name="pesquisaIsbnRequest"/>
+
+         <wsdl:output message="impl:pesquisaIsbnResponse" name="pesquisaIsbnResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="pesquisaAutor">
+
+         <wsdl:input message="impl:pesquisaAutorRequest" name="pesquisaAutorRequest"/>
+
+         <wsdl:output message="impl:pesquisaAutorResponse" name="pesquisaAutorResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SimpleBookStoreSoapBinding" type="impl:SimpleBookStore">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="pesquisaIsbn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="pesquisaIsbnRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="pesquisaIsbnResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="pesquisaAutor">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="pesquisaAutorRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="pesquisaAutorResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SimpleBookStoreService">
+
+      <wsdl:port binding="impl:SimpleBookStoreSoapBinding" name="SimpleBookStore">
+
+         <wsdlsoap:address location="http://localhost:8080/SimpleWebService/services/SimpleBookStore"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
